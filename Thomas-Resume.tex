@@ -1,4 +1,305 @@
-\documentclass{article}
+%
+%Academic CV LaTeX Template
+% Author: Dubasi Pavan Kumar
+% LinkedIn: https://www.linkedin.com/in/im-pavankumar/
+% License: MIT
+%
+% For errors, suggestions, or improvements, please contact:
+% Email: pavankumard.pg19.ma@nitp.ac.in
+%
+
+
+
+\documentclass[a4paper,11pt]{article}
+
+% Package imports
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Page layout
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+\setlength{\footskip}{5pt} % Addressing fancyhdr warning
+
+% Hyperlink setup (moved after fancyhdr to address warning)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}
+
+% URL style
+\urlstyle{same}
+
+% Text alignment
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
+\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
+\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
+\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
+\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
+\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
+\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
+\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
+\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
+
 \begin{document}
-My Resume!
+\headerfontiii
+
+% Header
+\begin{center}
+    {\Huge\textbf{THOMAS DIZON}}
+\end{center}
+\vspace{-5mm}
+
+\begin{center}
+    \small{
+    +61 424 795 424 | \href{mailto:thomas.dizon25@gmail.com}{thomas.dizon25@gmail.com} | 
+    \href{https://www.linkedin.com/in/thomas-dizon-411987200/}{LinkedIn}
+    }
+\end{center}
+\vspace{-4mm}
+\begin{center}
+    \small{Sydney, NSW, Australia}
+\end{center}
+
+\vspace{-1cm}
+\section{\textbf{Objective}}
+\vspace{1mm}
+\small{
+Physics and Computer Science student with a strong background in problem-solving and research. Experienced in leadership through coordination of tech events and skilled in communication and teamwork from over two years in customer service roles. Excited to learn and apply technical \& interpersonal skills in an internship at Microsoft.
+}
+\vspace{-4mm}
+
+\section{\textbf{Education}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{University of Sydney}{}
+{Bachelor of Science / Advanced Studies (Advanced), Major in Physics and Computer Science}{Jan 2021 - Dec 2025}
+
+\vspace{2mm}
+\resumeSubHeadingListEnd
+
+\vspace{-8mm}
+
+\section{\textbf{Experience}}
+\vspace{-0.4mm}
+  \resumeSubHeadingListStart
+  \resumeSubheading
+      {Qantas}{}
+      {Customer Service Agent}{Jul 2024 - Present}
+      \resumeItemListStart
+      \item \textbf{Responsibilities:} Facilitating seamless customer experiences by managing check-ins, resolving ticketing issues, and providing flight assistance, demonstrating strong problem-solving skills and attention to detail.
+      \item \textbf{Skills:} Customer Service, Communication, Time management, Leadership, Accredited knowledge of airline operation and products, Adaptability, Attention to detail, High performance under pressure, and more.
+      \resumeItemListEnd 
+
+  \resumeSubheading
+    {Commonwealth Bank}{}
+    {Customer Care Specialist}{Feb 2022 - Oct 2023}
+    \resumeItemListStart
+      \item \textbf{Responsibilities:} Resolving general banking enquiries, managing sensitive customer information, detecting scams \& fraud, assisting vulnerable customers, identifying and mitigating risk, and more.
+      \item \textbf{Skills:} Real-time problem solving, Risk management, Empathy, Communication, Customer service, Accredited knowledge of financial products and banking services, Leadership, Managing bank accounts and information
+    \resumeItemListEnd
+  \resumeSubHeadingListEnd
+\vspace{-2mm}
+My 2+ years in customer service have sharpened my communication and problem-solving skills and given me valuable insights into diverse user needs, which will help me design more intuitive and inclusive software solutions.
+
+\vspace{-4mm}
+\section{\textbf{Leadership}}
+\resumeSubHeadingListStart
+    \resumeSubheading
+    {Sydney Computing Society}
+    {}
+    {Technology Events Director}
+    {Mar 2023 - Sep 2024}
+    \resumeItemListStart
+        \item \textbf{Responsibilities:} Planning, managing, and delivering tech-related events including Tech Talks, Workshops, Programming Competitions, Hackathons and Crash Courses.
+        \item \textbf{Skills:} Event Management, Communication, Leadership, Collaboration, Public Speaking, Organisation, Community Service, Taking initiative
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\vspace{-2mm}
+Under my leadership, we ran 40+ events with 2000+ students in total, including SYNCS Hack 2024 boasting \$7000 in prizes and 250+ participants! I also led a Quantum Panel including researchers from USYD, who I know Microsoft is involved with. See \href{https://www.instagram.com/syncsusyd/}{@syncsusyd} for information!
+
+\vspace{-2mm}
+
+\section{\textbf{Notable Projects}}
+\vspace{-0.1mm}
+\resumeSubHeadingListStart
+
+\resumeProject
+  {Developing a full-stack device and network monitoring tool}
+  {Tools: Django, Swift, Tailwind CSS, React, Github, PostgreSQL}
+  {Jul 2024 - Present}
+  {}
+\resumeItemListStart
+  \item Developed a macOS app in Swift which reports device information to a Django API regularly
+  \item Developed a centralised dashboard front-end in React, styled with Tailwind to intuitively summarise data collected from macOS devices
+\resumeItemListEnd
+
+\resumeProject
+  {Developing a P2P File-Transfer program in C}
+  {Tools: gcc, gdb, Makefiles, git, bash, }
+  {Jan 2024 - Jul 2024}
+  {}
+\resumeItemListStart
+  \item Applied ideas in parallel programming to facilitate decentralised file transfer between devices
+  \item Implemented Merkle Trees and hashing algorithms to ensure secure and efficient data transfer
+\resumeItemListEnd
+
+\resumeProject
+  {Simulating Molecular Spectra w/ Quantum Computers}
+  {Tools: Qiskit, Jupyter Notebook, IBM Quantum}
+  {Jan 2023 - Jul 2023}
+    {}
+\resumeItemListStart
+  \item Wrote Qiskit scripts to simulate the spectrum of Hydrogen, Lithium and Methane using the VQE algorithm partnered with classical statistical techniques
+  \item Performed secondary research on existing Quantum Algorithms and the capabilities of NISQ era Quantum Devices
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\vspace{-6mm}
+\section{\textbf{Skills}}
+\vspace{-0.4mm}
+ \resumeHeadingSkillStart
+  \resumeSubItem{Programming Languages:}
+    { Python, Java, C, C\#, Julia, R, Matlab}
+    \resumeSubItem{Web Development:}
+    { HTML, CSS, JavaScript, React, Tailwind}
+    \resumeSubItem{DS\&A:}
+    { Experienced with problem-solving, coding challenges, and algorithm optimization.}
+    \resumeSubItem{Other:}
+    { Docker, Azure, TDD, RESTful API's, SQL, NoSQL, Unit Testing, LaTex, High level math, Qiskit}
+ \resumeHeadingSkillEnd
+
+
+\section{\textbf{Additional Information}}
+\vspace{-0.4mm}
+\small{
+
+\textbf{Interests:} Quantum Computing, Web Development, Travelling, Public Speaking
+}
+
+\textbf{Relevant Coursework:} Data Structures \& Algorithms, Systems Programming, Object Oriented Programming, Algorithm Design, Discrete Optimisation, Introduction to Programming
+\vspace{-4mm}
+
+
+
 \end{document}
